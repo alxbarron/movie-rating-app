@@ -24,7 +24,7 @@
             <v-icon>mdi-contact-mail</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>About</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </router-link>
@@ -39,6 +39,10 @@
   >
     <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     <v-toolbar-title>Vuetify</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-toolbar-items class="hidden-sm-and-down">
+      <v-btn flat v-bind:to="{ name: 'AddMovie' }">Add Movie</v-btn>
+  </v-toolbar-items>
   </v-app-bar>
 
   <v-content>
@@ -46,11 +50,8 @@
       class="fill-height"
       fluid
     >
-    <v-row
-        align="center"
-        justify="center"
-      >
-        <v-col class="text-center">
+    <v-row>
+        <v-col>
           <div id="app">
             <router-view/>
           </div>

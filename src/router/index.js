@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+
 
 Vue.use(VueRouter);
 
@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home,
+    component: () => import('../views/Home.vue'),
   },
   {
     path: '/about',
@@ -18,9 +18,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
+  {
+    path: '/movies/add',
+    name: 'AddMovie',
+    component: () => import('../components/AddMovie'),
+  },
 ];
 
 const router = new VueRouter({
+  mode: 'history',
   routes,
 });
 
