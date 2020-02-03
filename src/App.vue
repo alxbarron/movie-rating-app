@@ -41,7 +41,7 @@
     <v-toolbar-title>Vuetify</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat v-bind:to="{ name: 'AddMovie' }">Add Movie</v-btn>
+      <v-btn text v-bind:to="{ name: 'AddMovie' }">Add Movie</v-btn>
   </v-toolbar-items>
   </v-app-bar>
 
