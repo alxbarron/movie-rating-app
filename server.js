@@ -12,11 +12,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/movie_rating_app', function() {
-  console.log('Connection has been made');
+mongoose.connect('mongodb://localhost/movie_rating_app', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
+.then(() => console.log('Connection has been made'))
 .catch(err => {
-  console.log('App starting error:', err.stack);
+  console.log(`App starting error: ${err.stack}`);
+  // console.log(`DB Connection Error: ${err.message}`);
   process.exit(1);
 });
 
