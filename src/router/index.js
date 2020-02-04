@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -21,7 +20,12 @@ const routes = [
   {
     path: '/movies/add',
     name: 'AddMovie',
-    component: () => import('../components/AddMovie'),
+    component: () => import('../components/AddMovie.vue'),
+  },
+  {
+    path: '/movies/:id',
+    name: 'Movie',
+    component: () => import('../components/Movie.vue'),
   },
 ];
 

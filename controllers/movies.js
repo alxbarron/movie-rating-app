@@ -10,6 +10,13 @@ module.exports.controller = (app) => {
       });
     });
   });
+  // fetch a single movie
+  app.get('/movies/:id', (req, res) => {
+    MovieSchema.findById(req.params.id, 'description genre name release_year', (error, movie) => {
+      if (error) { console.log(error); }
+      res.send(movie);
+    });
+  });
   // add a new movie
   app.post('/movies', (req, res) => {
     const newMovie = new MovieSchema({

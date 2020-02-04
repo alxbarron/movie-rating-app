@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid>
-    <v-row no-gutters>
-      <v-col sm="4" v-for="movie in movies" :key="movie._id">
+  <v-container>
+    <v-row justify="center">
+      <v-col sm="6">
         <v-card outlined tile class="text-left">
           <v-card-title class="headline">
               {{movie.name}}
@@ -13,8 +13,7 @@
             {{movie.description}}
           </v-card-text>
           <v-card-actions>
-            <v-btn text color="purple" v-bind:to="`/movies/${movie._id}`">
-              Open</v-btn>
+            <v-btn text color="purple">Rate this movie</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -23,35 +22,27 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue';
 import axios from 'axios';
 
 export default {
-  name: 'home',
+  name: 'Movie',
   data() {
-    return { movies: [] };
+    return { movie: [] };
   },
   mounted() {
-    this.fetchMovies();
+    this.fetchMovie();
   },
   methods: {
-    async fetchMovies() {
+    async fetchMovie() {
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/movies',
+        url: `http://localhost:8081/movies/${this.$route.params.id}`,
       }).then((response) => {
-        this.movies = response.data.movies;
+        this.movie = response.data;
       }).catch(() => {
 
       });
     },
-    reply() {
-      this.message = this.flag ? 'I\'m doing great. Thank You!' : 'Hello there, how are you today?';
-      this.btnTxt = this.flag ? 'Greet' : 'Reply';
-      this.flag = !this.flag;
-    },
   },
-  components: { },
 };
 </script>
